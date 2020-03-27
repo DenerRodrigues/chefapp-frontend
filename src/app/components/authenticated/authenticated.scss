@@ -1,0 +1,16 @@
+@import './../../app.scss';
+@import './../../common/mixins';
+
+// main area
+.main {
+    padding: 3.25em 0 0 0;
+    margin-left: -0.5em;
+    margin-bottom: -1em;
+  @include themify($themes) {
+    color: themed('text');
+  }
+}
+
+.content {
+  min-height: calc(100vh - 14.48rem);
+}

@@ -1,0 +1,109 @@
+@import './../common.scss';
+@import './../mixins.scss';
+
+
+
+.navbar {
+  @include themify($themes) {
+    background-color: themed('navbar-background') !important;
+  }
+
+  &-item {
+    @include themify($themes) {
+      background-color: themed('navbar-background');
+      color: themed('navbar-text') !important;
+    }
+
+    &.is-active {
+      @include themify($themes) {
+        background-color: themed('selected') !important;
+        color: themed('link') !important;
+      }
+    }
+
+    &:hover, &:focus {
+      @include themify($themes) {
+        background-color: themed('selected') !important;
+        color: themed('text-hover') !important;
+      }
+    }
+  }
+
+  .is-brand {
+    &:hover {
+      @include themify($themes) {
+        background-color: themed('navbar-background') !important;
+      }
+    }
+  }
+
+  &-brand-logo {
+    max-height: 2.25em !important;
+    border-radius: .25em;
+    padding: .25em;
+    @include themify($themes) {
+      background-color: themed('navbar-background');
+    }
+  }
+
+  &-burger {
+    border: 0;
+    @include themify($themes) {
+      background-color: themed('navbar-background') !important;
+    }
+
+    span {
+      @include themify($themes) {
+        background-color: themed('menu-title');
+      }
+    }
+  }
+
+  &-link {
+    @include themify($themes) {
+      color: themed('navbar-text');
+    }
+
+    figure {
+      img {
+        border-radius: 50%;
+        max-height: 2em;
+      }
+    }
+
+    &:hover {
+      @include themify($themes) {
+        background-color: themed('navbar-background');
+      }
+    }
+  }
+
+
+  .navbar-link {
+    @include themify($themes) {
+      background-color: themed('navbar-background') !important;
+      color: themed('navbar-text') !important;
+    }
+
+    &:hover {
+      @include themify($themes) {
+        background-color: themed('selected') !important;
+        color: themed('text-hover') !important;
+      }
+    }
+  }
+
+  .navbar-dropdown {
+    @include themify($themes) {
+      background-color: themed('navbar-background') !important;
+      color: themed('navbar-text') !important;
+      border-top: 2px solid themed('navbar-shadow');
+    }
+  }
+
+  .navbar-divider {
+    @include themify($themes) {
+      background-color: themed('navbar-shadow') !important;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<aside class="aside">
+  <nav class="menu">
+    <p class="menu-label">
+      General
+    </p>
+    <ul class="menu-list">
+      <li>
+        <a ng-class="{'is-active': $ctrl.stateName === 'authenticated.food'}"
+           href="#" ui-sref="authenticated.food">
+          <span class="icon is-small"><i class="fa fa-flash"></i></span>&nbsp;Food
+        </a>
+      </li>
+    </ul>
+    <ul class="menu-list">
+      <li>
+        <a ng-class="{'is-active': $ctrl.stateName === 'authenticated.chef'}"
+           href="#" ui-sref="authenticated.chef">
+          <span class="icon is-small"><i class="fa fa-cutlery"></i></span>&nbsp;Chef
+        </a>
+      </li>
+    </ul>
+    <p class="menu-label">
+      Development
+    </p>
+    <ul class="menu-list">
+      <li>
+        <a target="_blank" href="https://github.com/DenerRodrigues/chefapp-api">
+          <span class="icon is-small"><i class="fa fa-github"></i></span>&nbsp;API
+        </a>
+      </li>
+      <li>
+        <a target="_blank" href="https://github.com/DenerRodrigues/chefapp-frontend">
+          <span class="icon is-small"><i class="fa fa-github"></i></span>&nbsp;FrontEnd
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>

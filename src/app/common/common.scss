@@ -1,0 +1,30 @@
+$themes: (
+  clean: (
+    body-background: white,
+    static-background: whitesmoke,
+
+    navbar-background: white,
+    navbar-text: #24292e,
+    navbar-shadow: whitesmoke,
+
+    sidebar-text: #b3b3b3,
+    sidebar-background: white,
+    footer-background: white,
+
+    text: #24292e,
+    text-hover: black,
+    link: #3273dc,
+
+    selected: #4a4a4a24,
+    menu-title: #6272A4,
+
+    input-background: white,
+    border: #dbdbdb,
+    placeholder: #dbdbdb,
+
+    table-hover: #fafafa,
+
+    scrollbar-track-piece: #b3b3b3d1,
+    scrollbar-thumb: #666,
+  ),
+)

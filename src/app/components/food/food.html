@@ -1,0 +1,105 @@
+<div class="box is-paddingless">
+  <div class="level">
+    <div class="level-left">
+      <div class="level-item">
+        <div class="title"><i class="fa fa-flash"></i>&nbsp;Food</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content box is-paddingless">
+  <span class="subtitle has-text-centered is-italic has-text-weight-light" ng-if="!$ctrl.foodRecipes.lenght && !$ctrl.hasFood">
+    <div>
+      Que pena :(
+    </div>
+    <div>
+      Ainda não temos nenhuma receita cadastrada.&nbsp;
+      <a class="has-text-link" ui-sref="authenticated.chef">Clique aqui</a>&nbsp; e seja um Chef de cozinha :D
+    </div>
+  </span>
+  <div class="columns" ng-if="$ctrl.foodRecipes.length || $ctrl.hasFood">
+    <div class="column is-4">
+      <div class="field">
+        <div class="control has-icons-left">
+          <input type="text" placeholder="Pesquisar" class="input" ng-model="$ctrl.search" autocomplete="off"
+            maxlength="100">
+          <span class="icon is-small is-left">
+            <i class="fa fa-search"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field is-grouped">
+        <div class="control">
+          <div class="select">
+            <select ng-model="$ctrl.chef_id" ng-change="$ctrl.listAllFoodRecpies($ctrl.category, $ctrl.chef_id)">
+              <option ng-value="">Chef</option>
+              <option ng-repeat="chef in $ctrl.chefs" ng-value="chef.id">{{ chef.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="control">
+          <div class="select">
+            <select ng-model="$ctrl.category" ng-change="$ctrl.listAllFoodRecpies($ctrl.category, $ctrl.chef_id)">
+              <option ng-value="">Categoria</option>
+              <option ng-repeat="category in $ctrl.CATEGORIES" ng-value="category.id">{{ category.value }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="columns is-multiline">
+    <div class="column is-6" ng-repeat="food in $ctrl.foodRecipes | orderBy: 'preparation_time' | filter: $ctrl.search" ng-init="$ctrl.hasFood=true">
+      <div class="box has-shadow">
+        <div class="title">{{ food.chef.name }}</div>
+        <div class="subtitle">{{ food.name }}</div>
+        <span>Categoria</span>:
+        &nbsp;
+        <span ng-repeat="category in $ctrl.CATEGORIES">
+          <span ng-if="category.id.toString() === food.category.toString()">
+            {{ category.value }}
+          </span>
+        </span>
+        <div class="is-italic">{{ food.description }}</div>
+        <div>
+          <span>Tempo de preparo</span>:
+          {{ food.preparation_time }}
+        </div>
+        <div class="has-text-weight-bold">
+          <currency value="food.price"></currency>
+        </div>
+        <br>
+        <div>
+          <span class="has-text-weight-bold">{{ food.chef.phone }}</span>&nbsp;| {{ food.chef.email }}
+        </div>
+        <div>
+          {{ food.chef.address_str }}
+        </div>
+        <div>
+          <span>Funciona de</span>&nbsp;
+          {{ food.chef.open_at }}
+          &nbsp;<span>as</span>&nbsp;
+          {{ food.chef.close_at }}
+        </div>
+        <div>
+          <span ng-repeat="day in $ctrl.DAYS_OF_WEAK">
+            <p class="tag">
+              {{ day.value }}
+              <span class="has-text-success" ng-if="food.chef.days_of_weak.indexOf(day.id) >= 0">
+                &nbsp;
+                <i class="fa fa-check"></i>
+              </span>
+              <span class="has-text-danger" ng-if="food.chef.days_of_weak.indexOf(day.id) < 0">
+                &nbsp;
+                <i class="fa fa-times"></i>
+              </span>
+            </p>&nbsp;
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

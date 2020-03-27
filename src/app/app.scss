@@ -1,0 +1,208 @@
+@import "~bulma";
+@import './common/common.scss';
+@import './common/mixins.scss';
+
+.nav-tag {
+  padding-right: 30px;
+}
+
+.tag-notif {
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  margin-left: 10px;
+
+  @media (max-width: 768px) {
+    margin-left: -2px;
+  }
+}
+
+.breadcrumb:not(:last-child) {
+  margin-bottom: 0;
+}
+
+html, body {
+  @include themify($themes) {
+    color: themed('text') !important;
+    background-color: themed('body-background') !important;
+  }
+}
+
+.is-wrapped {
+  @include themify($themes) {
+    background-color: themed('static-background');
+  }
+}
+
+.box {
+  @include themify($themes) {
+    color: themed('text');
+    background-color: themed('body-background');
+    box-shadow: none;
+  }
+
+  .has-shadow {
+    @include themify($themes) {
+      box-shadow: 0 2px 3px themed('border'), 0 0 0 1px themed('border') !important;
+    }
+  }
+
+  .is-hoverable {
+    @include themify($themes) {
+      cursor: pointer;
+      &:hover {
+        background-color: themed('selected') !important;
+      }
+    }
+  }
+}
+
+.box.is-paddingless {
+  padding: 1em !important;
+  margin-bottom: 0.5em !important;
+}
+
+.title, .subtitle {
+  @include themify($themes) {
+    color: themed('text');
+  }
+}
+
+a {
+  @include themify($themes) {
+    color: themed('text');
+  }
+
+  &.is-active {
+    @include themify($themes) {
+      color: themed('link');
+    }
+  }
+
+  &:hover {
+    @include themify($themes) {
+      color: themed('link');
+    }
+  }
+}
+
+.tabs a {
+  @include themify($themes) {
+    color: themed('text');
+  }
+}
+
+.block {
+  margin-top: .5em;
+}
+
+.has-shadow {
+  @include themify($themes) {
+    box-shadow: 0 2px 0 0 themed('navbar-shadow') !important;
+  }
+}
+
+.select-label {
+  font-weight: 700;
+  vertical-align: super;
+  padding-right: 0.75em;
+}
+
+label {
+  @include themify($themes) {
+    color: themed('text') !important;
+  }
+}
+
+input, .textarea {
+  @include themify($themes) {
+    background-color: themed('input-background');
+    color: themed('text') !important;
+    border-color: themed('border') !important;
+  }
+}
+
+.select {
+  select {
+    @include themify($themes) {
+      background-color: themed('input-background');
+      color: themed('text');
+    }
+  }
+
+  &:not(.is-multiple):not(.is-loading) {
+    &:hover::after {
+      @include themify($themes) {
+        border-color: themed('text');
+      }
+    }
+  }
+}
+
+::placeholder {
+  @include themify($themes) {
+    color: themed('placeholder') !important;
+  }
+}
+
+.button.is-static, .button.is-wrapped {
+  @include themify($themes) {
+    background-color: themed('static-background') !important;
+    color: themed('text') !important;
+    border-color: themed('border') !important;
+  }
+}
+
+.table {
+  @include themify($themes) {
+    color: themed('text');
+    background-color: themed('body-background');
+  }
+}
+
+.content table thead td, .content table thead th {
+  @include themify($themes) {
+    color: themed('text');
+  }
+}
+
+.content table td, .content table th {
+  @include themify($themes) {
+    border-color: themed('border');
+  }
+}
+
+.table.is-hoverable tbody tr:not(.is-selected):hover {
+  @include themify($themes) {
+    background-color: themed('table-hover');
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  -webkit-border-radius: 16px;
+}
+
+::-webkit-scrollbar-track-piece {
+  @include themify($themes) {
+    background-color: themed('scrollbar-track-piece');
+    -webkit-border-radius: 3px;
+  }
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  @include themify($themes) {
+    height: 5px;
+    background-color: themed('scrollbar-thumb');
+    -webkit-border-radius: 3px;
+  }
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  @include themify($themes) {
+    width: 5px;
+    background-color: themed('scrollbar-thumb');
+    -webkit-border-radius: 3px;
+  }
+}

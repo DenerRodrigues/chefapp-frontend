@@ -1,0 +1,107 @@
+<div class="box is-paddingless">
+  <div class="level">
+    <div class="level-left">
+      <div class="level-item">
+        <div class="title"><i class="fa fa-cutlery"></i>&nbsp;Chef</div>
+      </div>
+    </div>
+    <div class="level-right">
+      <div class="level-item">
+        <nav class="breadcrumb is-small" aria-label="breadcrumbs">
+          <ul>
+            <li>
+              <a href="#" ui-sref="authenticated.food">Home</a>
+            </li>
+            <li>
+              &nbsp;&nbsp;
+              <a class="is-active is-paddingless" href="#">Chef</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content box is-paddingless">
+  <div class="columns" ng-if="!$ctrl.showForm">
+    <div class="column">
+      <button class="button is-primary" type="button" ng-click="$ctrl.showForm=true">
+        <span class="icon is-small"><i class="fa fa-plus"></i></span>&nbsp;Novo Chef
+      </button>
+    </div>
+  </div>
+
+  <chef-form ng-if="$ctrl.showForm" show-form="$ctrl.showForm" chef-selected="$ctrl.chefSelected"></chef-form>
+
+  <div class="subtitle has-text-centered is-italic has-text-weight-light" ng-if="!$ctrl.chefs.length && !$ctrl.showForm">
+      Você ainda não é um Chef de cozinha...
+  </div>
+
+  <div class="columns" ng-if="$ctrl.chefs.length && !$ctrl.showForm">
+    <div class="column is-4">
+      <div class="field">
+        <div class="control has-icons-left">
+          <input type="text" placeholder="Pesquisar" class="input" ng-model="$ctrl.search" autocomplete="off"
+            maxlength="100">
+          <span class="icon is-small is-left">
+            <i class="fa fa-search"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="columns is-multiline" ng-if="$ctrl.chefs.length && !$ctrl.showForm">
+    <div class="column is-6" ng-repeat="chef in $ctrl.chefs | orderBy: '-last_update' | filter: $ctrl.search">
+      <div class="box has-shadow">
+        <div class="title">{{ chef.name }}</div>
+        <div class="is-italic">{{ chef.description }}</div>
+        <div>
+          <span class="has-text-weight-bold">{{ chef.phone }}</span>&nbsp;| {{ chef.email }}
+        </div>
+        <div>
+          {{ chef.address_str }}
+        </div>
+        <div>
+          <span>Funciona de</span>&nbsp;
+          {{ chef.open_at }}
+          &nbsp;<span>as</span>&nbsp;
+          {{ chef.close_at }}
+        </div>
+        <div>
+          <span ng-repeat="day in $ctrl.DAYS_OF_WEAK">
+            <p class="tag">
+              {{ day.value }}
+              <span class="has-text-success" ng-if="chef.days_of_weak.indexOf(day.id) >= 0">
+                &nbsp;
+                <i class="fa fa-check"></i>
+              </span>
+              <span class="has-text-danger" ng-if="chef.days_of_weak.indexOf(day.id) < 0">
+                &nbsp;
+                <i class="fa fa-times"></i>
+              </span>
+            </p>&nbsp;
+          </span>
+        </div>
+        <br>
+        <div class="is-centered">
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-small is-link" type="button" ng-click="$ctrl.showForm=true;$ctrl.chefSelected=chef">
+                <i class="fa fa-pencil"></i>
+                &nbsp;Editar
+              </button>
+            </div>
+            <div class="control">
+              <a class="button is-small is-danger" type="button" ui-sref="authenticated.chef-food({id: chef.id})">
+                <i class="fa fa-cutlery"></i>
+                &nbsp;Exibir Receitas
+              </button>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

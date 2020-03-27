@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="column">
+      <div class="field has-text-centered">
+        <img src="https://p1.hiclipart.com/preview/211/445/164/dceu-the-flash-logo-png-clipart.jpg" alt="ChefApp" width="56px">
+      </div>
+      <div class="field is-size-3 has-text-centered">
+        Sign up to ChefApp
+      </div>
+    </div>
+  </div>
+  <div class="columns is-centered">
+    <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+      <form class="box" ng-submit="$ctrl.signup()">
+        <div class="field">
+          <label class="label">Nome completo</label>
+          <div class="control has-icons-left">
+            <input type="text" name="full_name" placeholder="Nome completo" class="input"
+                   ng-model="$ctrl.user.full_name" autocomplete="off" required>
+            <span class="icon is-small is-left">
+              <i class="fa fa-user-o"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">E-mail</label>
+          <div class="control has-icons-left">
+            <input type="email" name="email" placeholder="your@email.com" class="input" ng-model="$ctrl.user.email"
+                   autocomplete="off" required>
+            <span class="icon is-small is-left">
+              <i class="fa fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Senha</label>
+          <div class="control has-icons-left">
+            <input type="password" name="password" placeholder="*******" class="input" ng-model="$ctrl.user.password"
+                   autocomplete="off" required>
+            <span class="icon is-small is-left">
+              <i class="fa fa-lock"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Telefone</label>
+          <div class="control has-icons-left">
+            <input type="tel" name="phone" placeholder="31 9 1234-5678" class="input"
+                   ng-model="$ctrl.user.phone" ui-br-phone-number-mask required>
+            <span class="icon is-small is-left">
+              <i class="fa fa-phone"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">CEP Endereço</label>
+          <div class="control has-icons-left">
+            <input type="text" name="cep" placeholder="12345-000" class="input"
+                   ng-model="$ctrl.user.cep_address" ui-br-cep-mask required>
+            <span class="icon is-small is-left">
+              <i class="fa fa-users"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <button class="button is-small is-fullwidth is-success">
+            <i class="fa fa-sign-in"></i>&nbsp;<strong>Sign Up</strong>
+          </button>
+        </div>
+        <div class="field" ng-if="$ctrl.message">
+          <div class="notification {{ $ctrl.message.type }}">
+            <span translate>{{ $ctrl.message.text }}</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="columns is-centered">
+    <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+      <div class="box is-paddingless is-wrapped has-text-centered">
+        Já possui uma conta?&nbsp;<a href="#" ui-sref="guest.login">Sign In!</a>
+      </div>
+    </div>
+  </div>
+</div>

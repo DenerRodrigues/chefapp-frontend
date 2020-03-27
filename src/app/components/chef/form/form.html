@@ -1,0 +1,179 @@
+<div class="columns">
+  <div class="column">
+    <form ng-submit="$ctrl.saveChef()">
+      <div class="field">
+        <label class="label">Nome</label>
+        <div class="control">
+          <input type="text" name="name" placeholder="Nome" class="input" ng-model="$ctrl.chef.name" autocomplete="off"
+            required>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Descrição</label>
+        <div class="control">
+          <textarea name="description" placeholder="Descrição" class="textarea" ng-model="$ctrl.chef.description"
+            autocomplete="off"></textarea>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">E-mail</label>
+            <div class="control has-icons-left">
+              <input type="email" name="email" placeholder="your@email.com" class="input" ng-model="$ctrl.chef.email"
+                autocomplete="off" required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">Telefone</label>
+            <div class="control has-icons-left">
+              <input type="tel" name="phone" placeholder="31 9 1234-5678" class="input" ng-model="$ctrl.chef.phone"
+                ui-br-phone-number-mask required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-phone"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">CEP Endereço</label>
+        <div class="control has-icons-left">
+          <input type="text" name="cep" placeholder="12345-000" class="input" ng-model="$ctrl.chef.address.cep"
+            ui-br-cep-mask required>
+          <span class="icon is-small is-left">
+            <i class="fa fa-users"></i>
+          </span>
+        </div>
+      </div>
+      <div class="columns" ng-if="$ctrl.chef.id">
+        <div class="column is-10">
+          <div class="field">
+            <label class="label">Rua</label>
+            <div class="control">
+              <input type="text" name="street" placeholder="Rua" class="input" ng-model="$ctrl.chef.address.street"
+                required>
+            </div>
+          </div>
+        </div>
+        <div class="column is-2">
+          <div class="field">
+            <label class="label">Número</label>
+            <div class="control">
+              <input type="text" name="number" placeholder="Número" class="input" ng-model="$ctrl.chef.address.number"
+                required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns" ng-if="$ctrl.chef.id">
+        <div class="column">
+          <div class="field">
+            <label class="label">Complemento</label>
+            <div class="control">
+              <input type="text" name="complement" placeholder="Complemento" class="input"
+                ng-model="$ctrl.chef.address.complement">
+            </div>
+          </div>
+        </div>
+        <div class="column" ng-if="$ctrl.chef.id">
+          <div class="field">
+            <label class="label">Bairro</label>
+            <div class="control">
+              <input type="text" name="neighborhood" placeholder="Bairro" class="input"
+                ng-model="$ctrl.chef.address.neighborhood" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns" ng-if="$ctrl.chef.id">
+        <div class="column">
+          <div class="field">
+            <label class="label">Cidade</label>
+            <div class="control">
+              <input type="text" name="complement" placeholder="Cidade" class="input"
+                ng-model="$ctrl.chef.address.city">
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">Estado</label>
+            <div class="control">
+              <input type="text" name="state" placeholder="Estado" class="input" ng-model="$ctrl.chef.address.state"
+                required>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">País</label>
+            <div class="control">
+              <input type="text" name="country" placeholder="País" class="input" ng-model="$ctrl.chef.address.country"
+                required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">Hora de abertura</label>
+            <div class="control">
+              <input type="time" name="open_at" placeholder="Hora de abertura" class="input"
+                ng-model="$ctrl.chef.open_at" required>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">Hora de fechamento</label>
+            <div class="control">
+              <input type="time" name="close_at" placeholder="Hora de fechamento" class="input"
+                ng-model="$ctrl.chef.close_at" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Dias da semana</label>
+        <div class="control">
+          <div class="select is-multiple">
+            <select multiple size="7" ng-model="$ctrl.chef.days_of_weak">
+              <option ng-repeat="days in $ctrl.DAYS_OF_WEAK" ng-value="days.id">{{ days.value }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-small is-link" type="submit">
+            <i class="fa fa-plus"></i>
+            &nbsp;Salvar
+          </button>
+        </div>
+        <div class="control">
+          <button class="button is-small is-danger" type="button" ng-click="$ctrl.removeChef()">
+            <i class="fa fa-trash"></i>
+            &nbsp;Remover
+          </button>
+        </div>
+        <div class="control">
+          <button class="button is-small is-light" type="button" ng-click="$ctrl.back()">
+            Voltar
+          </button>
+        </div>
+      </div>
+      <div class="field" ng-if="$ctrl.message">
+        <div class="notification {{ $ctrl.message.type }}">
+          <span translate>{{ $ctrl.message.text }}</span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

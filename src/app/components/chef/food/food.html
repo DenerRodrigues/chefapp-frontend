@@ -1,0 +1,85 @@
+<div class="box is-paddingless">
+  <div class="level">
+    <div class="level-left">
+      <div class="level-item">
+        <div class="title"><i class="fa fa-cutlery"></i>&nbsp;{{ $ctrl.chef.name }} - Food</div>
+      </div>
+    </div>
+    <div class="level-right">
+      <div class="level-item">
+        <nav class="breadcrumb is-small" aria-label="breadcrumbs">
+          <ul>
+            <li>
+              <a href="#" ui-sref="authenticated.food">Home</a>
+            </li>
+            <li>
+              &nbsp;&nbsp;
+              <a class="is-paddingless" href="#" ui-sref="authenticated.chef">Chef</a>
+            </li>
+            &nbsp;&nbsp;
+            <li>
+              &nbsp;&nbsp;
+              <a class="is-active is-paddingless" href="#">Food</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content box is-paddingless">
+<div class="columns" ng-if="!$ctrl.showForm">
+    <div class="column">
+      <button class="button is-primary" type="button" ng-click="$ctrl.showForm=true">
+        <span class="icon is-small"><i class="fa fa-plus"></i></span>&nbsp;Nova Receita
+      </button>
+    </div>
+  </div>
+
+  <chef-food-form ng-if="$ctrl.showForm" show-form="$ctrl.showForm" food-selected="$ctrl.foodSelected"></chef-food-form>
+
+  <span class="subtitle has-text-centered is-italic has-text-weight-light" ng-if="!$ctrl.hasFood && !$ctrl.showForm">
+    <div>
+      Você inda não tem nenhuma receita cadastrada...
+    </div>
+  </span>
+
+  <div class="columns" ng-if="$ctrl.hasFood && !$ctrl.showForm">
+    <div class="column is-4">
+      <div class="field">
+        <div class="control has-icons-left">
+          <input type="text" placeholder="Pesquisar" class="input" ng-model="$ctrl.search" autocomplete="off"
+            maxlength="100">
+          <span class="icon is-small is-left">
+            <i class="fa fa-search"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="columns is-multiline" ng-if="$ctrl.hasFood && !$ctrl.showForm">
+    <div class="column is-6" ng-repeat="food in $ctrl.foodRecipes | orderBy: 'preparation_time' | filter: $ctrl.search">
+      <div class="box is-hoverable has-shadow" ng-click="$ctrl.showForm=true; $ctrl.foodSelected=food;">
+        <div class="title">{{ food.name }}</div>
+        <div>
+          <span>Categoria</span>:
+          &nbsp;
+          <span ng-repeat="category in $ctrl.CATEGORIES">
+            <span ng-if="category.id.toString() === food.category.toString()">
+              {{ category.value }}
+            </span>
+          </span>
+        </div>
+        <div class="is-italic">{{ food.description }}</div>
+        <div>
+          <span>Tempo de preparo</span>:
+          {{ food.preparation_time }}
+        </div>
+        <div class="has-text-weight-bold">
+          <currency value="food.price"></currency>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

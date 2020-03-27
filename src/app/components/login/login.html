@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="column">
+      <div class="field has-text-centered">
+        <img src="https://p1.hiclipart.com/preview/211/445/164/dceu-the-flash-logo-png-clipart.jpg" alt="ChefApp" width="56px">
+      </div>
+      <div class="field is-size-3 has-text-centered">
+        Sign up to ChefApp
+      </div>
+    </div>
+  </div>
+  <div class="columns is-centered">
+    <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+      <form class="box" ng-submit="$ctrl.login()">
+        <div class="field">
+          <label for="" class="label">E-mail</label>
+          <div class="control has-icons-left">
+            <input type="email" placeholder="your@email.com" class="input" ng-model="$ctrl.email" autocomplete="off"
+                   required>
+            <span class="icon is-small is-left">
+              <i class="fa fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="" class="label">Senha</label>
+          <div class="control has-icons-left">
+            <input type="password" placeholder="*******" class="input" ng-model="$ctrl.password" autocomplete="off"
+                   required>
+            <span class="icon is-small is-left">
+              <i class="fa fa-lock"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <button class="button is-small is-fullwidth is-success">
+            <i class="fa fa-sign-in"></i>&nbsp;<strong>Sign In</strong>
+          </button>
+        </div>
+        <div class="field" ng-if="$ctrl.message">
+          <div class="notification {{ $ctrl.message.type }}">
+            <span translate>{{ $ctrl.message.text }}</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="columns is-centered">
+    <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+      <div class="box is-paddingless is-wrapped has-text-centered">
+        Ainda não é possui uma conta?&nbsp;<a class="has-text-link" href="#" ui-sref="guest.signup">Sign Up!</a>
+      </div>
+    </div>
+  </div>
+</div>

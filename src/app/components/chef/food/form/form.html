@@ -1,0 +1,69 @@
+<div class="columns">
+  <div class="column">
+    <form ng-submit="$ctrl.saveFood()">
+      <div class="field">
+        <label class="label">Nome</label>
+        <div class="control">
+          <input type="text" name="name" placeholder="Nome" class="input" ng-model="$ctrl.food.name" autocomplete="off"
+            required>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Descrição</label>
+        <div class="control">
+          <textarea name="description" placeholder="Descrição" class="textarea" ng-model="$ctrl.food.description"
+            autocomplete="off"></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Preço</label>
+        <div class="control">
+          <input type="text" name="price" placeholder="Preço" class="input" ng-model="$ctrl.food.price"
+            ui-hide-group-sep ui-number-mask required>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Tempo de preparo</label>
+        <div class="control">
+          <input type="time" name="preparation_time" placeholder="Tempo de preparo" class="input"
+            ng-model="$ctrl.food.preparation_time" required>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Categoria</label>
+        <div class="control">
+          <div class="select">
+            <select ng-model="$ctrl.food.category" required>
+              <option value="">Selecione uma categoria</option>
+              <option ng-repeat="category in $ctrl.CATEGORIES" ng-value="category.id">{{ category.value }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-small is-link" type="submit">
+            <i class="fa fa-plus"></i>
+            &nbsp;Salvar
+          </button>
+        </div>
+        <div class="control">
+          <button class="button is-small is-danger" type="button" ng-click="$ctrl.removeFood()">
+            <i class="fa fa-trash"></i>
+            &nbsp;Remover
+          </button>
+        </div>
+        <div class="control">
+          <button class="button is-small is-light" type="button" ng-click="$ctrl.back()">
+            Voltar
+          </button>
+        </div>
+      </div>
+      <div class="field" ng-if="$ctrl.message">
+        <div class="notification {{ $ctrl.message.type }}">
+          <span translate>{{ $ctrl.message.text }}</span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
